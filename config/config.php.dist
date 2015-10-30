@@ -1,0 +1,7 @@
+<?php
+
+return array(
+    'client_id' => 'xxxxxx',
+    'client_secret' => 'xxxxxx',
+    'site' => 'xxxxx'
+);
