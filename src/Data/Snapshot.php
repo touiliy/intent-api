@@ -1,8 +1,8 @@
 <?php
 
-namespace BIMData\Intent\Data;
+namespace BIMData\IntentClient\Data;
 
-use BIMData\Intent\Exception;
+use BIMData\IntentClient\Service\Exception;
 
 class Snapshot{
     protected $value;

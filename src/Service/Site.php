@@ -1,11 +1,11 @@
 <?php
-namespace BIMData\Intent\Service;
+namespace BIMData\IntentClient\Service;
 
-use BIMData\Intent\Data\Snapshot;
-use BIMData\Intent\Exception;
+use BIMData\IntentClient\Data\Snapshot;
+use BIMData\IntentClient\Service\Exception;
 use GuzzleHttp\Psr7\Response;
 
-class Site extends \BIMData\Intent\Service{
+class Site extends Client {
 
     protected $site_name;
 

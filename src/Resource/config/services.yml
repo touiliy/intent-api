@@ -1,0 +1,11 @@
+services:
+    intent_client.token_storage.session:
+        class: BIMData\IntentClient\Token\Storage\Session
+
+    intent_client.access_bearer:
+        class: BIMData\IntentClient\Service\AccessBearer
+        arguments: ['%intent_client.client_id%', '%intent_client.client_secret', '@intent_client.token_storage.session']
+
+    intent_client.service:
+        class: BIMData\IntentClient\Service\Site
+        arguments: ['%intent_client.site%', '@intent_client.client']

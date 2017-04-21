@@ -1,5 +1,5 @@
 <?php
 
-namespace BIMData\Intent;
+namespace BIMData\IntentClient\Service;
 
 class Exception extends \Exception{ }

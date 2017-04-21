@@ -1,5 +1,5 @@
 <?php
-namespace BIMData\Intent\Token\Storage;
+namespace BIMData\IntentClient\Token\Storage;
 
 class Session implements TokenInterface{
     function __construct()

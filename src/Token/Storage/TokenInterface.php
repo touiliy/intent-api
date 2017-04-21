@@ -1,5 +1,5 @@
 <?php
-namespace BIMData\Intent\Token\Storage;
+namespace BIMData\IntentClient\Token\Storage;
 
 interface TokenInterface{
     public function fetch($var);

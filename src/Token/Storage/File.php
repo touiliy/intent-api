@@ -1,5 +1,6 @@
 <?php
-namespace BIMData\Intent\Token\Storage;
+
+namespace BIMData\IntentClient\Token\Storage;
 
 class File implements TokenInterface{
     protected $filename_suffix = '';

@@ -1,8 +1,9 @@
 <?php
 
-namespace BIMData\Intent;
+namespace BIMData\IntentClient\Service;
 
-class Client{
+class AccessBearer {
+
     protected $client_id;
     protected $client_secret;
     protected $bearer = null;

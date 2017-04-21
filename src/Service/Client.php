@@ -1,28 +1,29 @@
 <?php
 
-namespace BIMData\Intent;
+namespace BIMData\IntentClient\Service;
 
-abstract class Service {
-    /** @var Client */
-    protected $client;
+abstract class Client {
+
+    /** @var AccessBearer */
+    protected $accessBearer;
     protected $end_point;
     protected $end_point_oauth;
 
-    function __construct($client, $end_point = 'https://api.hubintent.com/api/datahub/v1', $end_point_oauth = 'https://accounts.hubintent.com/oauth/token')
+    function __construct($accessBearer, $end_point = 'https://api.hubintent.com/api/datahub/v1', $end_point_oauth = 'https://accounts.hubintent.com/oauth/token')
     {
-        $this->client = $client;
+        $this->accessBearer = $accessBearer;
         $this->http_client = new \GuzzleHttp\Client();
         $this->end_point = $end_point;
         $this->end_point_oauth = $end_point_oauth;
     }
 
     function call($httpMethod, $service_name, $service_method, $params = array()){
-        if(!$this->client->getBearer()){
+        if(!$this->accessBearer->getBearer()){
             $options = [
                 'form_params' => [
                     'grant_type' => 'client_credentials',
-                    'client_id' => $this->client->getClientId(),
-                    'client_secret' => $this->client->getClientSecret()
+                    'client_id' => $this->accessBearer->getClientId(),
+                    'client_secret' => $this->accessBearer->getClientSecret()
                 ],
                 'http_errors' => false
             ];
@@ -35,7 +36,7 @@ abstract class Service {
 
             $json = json_decode($response->getBody());
 
-            $this->client->setBearer($json->access_token, $json->expires_in);
+            $this->accessBearer->setBearer($json->access_token, $json->expires_in);
         }
 
         $path = self::getPath($service_name, $service_method);
@@ -60,8 +61,8 @@ abstract class Service {
 
     function getHeaders(){
         $headers = array();
-        if($this->client->getBearer()){
-            $headers['Authorization'] = 'Bearer '.$this->client->getBearer();
+        if($this->accessBearer->getBearer()){
+            $headers['Authorization'] = 'Bearer '.$this->accessBearer->getBearer();
         }
         return $headers;
     }
